@@ -1,32 +1,15 @@
 {
-  "name": "pw-training-isha",
+  "name": "playwrightpractice",
   "version": "1.0.0",
-  "description": "Your repo for the Playwright and TypeScript training program.",
+  "description": "",
   "main": "index.js",
-  "directories": {
-    "test": "tests"
-  },
-  "dependencies": {
-    "playwright": "^1.62.1",
-    "playwright-core": "^1.62.1",
-    "undici-types": "^8.3.0"
-  },
-  "devDependencies": {
-    "@playwright/test": "^1.62.1"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/v-i-s-w-a/pw-training-isha.git"
-  },
+  "scripts": {},
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/v-i-s-w-a/pw-training-isha/issues"
-  },
-  "homepage": "https://github.com/v-i-s-w-a/pw-training-isha#readme"
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "@types/node": "^26.1.2"
+  }
 }
