@@ -1,40 +1,15 @@
-import { test, expect } from '@playwright/test';
-import { CartPage } from '../pages/cartPage';
+import { test, expect } from './fixtures';
 
-test('verify cart items and remove product', async ({ page }) => {
-await page.goto('https://www.saucedemo.com/');
+test('verify cart items and remove product', async ({ cartPage }) => {
+  const names = await cartPage.itemNames();
 
-await page.getByPlaceholder('Username').fill('standard_user');
-await page.getByPlaceholder('Password').fill('secret_sauce');
-await page.getByRole('button', { name: 'Login' }).click();
+  expect(names).toContain('Sauce Labs Backpack');
+  expect(names).toContain('Sauce Labs Bike Light');
 
-const product1 = 'Sauce Labs Backpack';
-const product2 = 'Sauce Labs Bike Light';
+  await cartPage.removeItem('Sauce Labs Backpack');
 
-await page
-.locator('.inventory_item')
-.filter({ hasText: product1 })
-.getByRole('button', { name: 'Add to cart' })
-.click();
+  const remainingNames = await cartPage.itemNames();
 
-await page
-.locator('.inventory_item')
-.filter({ hasText: product2 })
-.getByRole('button', { name: 'Add to cart' })
-.click();
-
-const cartPage = new CartPage(page);
-await cartPage.open();
-
-const names = await cartPage.itemNames();
-
-expect(names).toContain(product1);
-expect(names).toContain(product2);
-
-await cartPage.removeItem(product1);
-
-const remainingNames = await cartPage.itemNames();
-
-expect(remainingNames).toContain(product2);
-expect(remainingNames).not.toContain(product1);
+  expect(remainingNames).toContain('Sauce Labs Bike Light');
+  expect(remainingNames).not.toContain('Sauce Labs Backpack');
 });
