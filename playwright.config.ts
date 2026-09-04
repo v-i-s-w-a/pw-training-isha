@@ -55,18 +55,18 @@ export default defineConfig({
     testMatch: /problem-user\.spec\.ts/,
   },
 
-  {
+{
   name: 'firefox',
-  use: { ...devices['Desktop Firefox'] },
+  use: { ...devices['Desktop Firefox'], storageState: '.auth/user.json' },
+  dependencies: ['setup'],
   testIgnore: /problem-user\.spec\.ts/,
-  },
-
-  {
+},
+{
   name: 'webkit',
-  use: { ...devices['Desktop Safari'] },
+  use: { ...devices['Desktop Safari'], storageState: '.auth/user.json' },
+  dependencies: ['setup'],
   testIgnore: /problem-user\.spec\.ts/,
-  },
-  
+},
 
     /* Test against mobile viewports. */
     // {
